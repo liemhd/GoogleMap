@@ -1,0 +1,681 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		180834CA23615EF50000874F /* Extension + DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180834C923615EF50000874F /* Extension + DropShadow.swift */; };
+		18283C2123597240009FA868 /* ListSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18283C2023597240009FA868 /* ListSearchViewController.swift */; };
+		18283C252359727A009FA868 /* ListSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18283C232359727A009FA868 /* ListSearchTableViewCell.swift */; };
+		18283C262359727A009FA868 /* ListSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18283C242359727A009FA868 /* ListSearchTableViewCell.xib */; };
+		18283C2B2359AFAD009FA868 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18283C2A2359AFAD009FA868 /* Extension.swift */; };
+		182D1E972362FF7600035570 /* PopupTopographicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D1E962362FF7600035570 /* PopupTopographicViewController.swift */; };
+		182D1E99236300A500035570 /* Extension + RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D1E98236300A500035570 /* Extension + RoundCorners.swift */; };
+		18325176235899C30005AC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18325175235899C30005AC0B /* AppDelegate.swift */; };
+		18325178235899C30005AC0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18325177235899C30005AC0B /* ViewController.swift */; };
+		1832517B235899C30005AC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18325179235899C30005AC0B /* Main.storyboard */; };
+		1832517D235899C40005AC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1832517C235899C40005AC0B /* Assets.xcassets */; };
+		18325180235899C40005AC0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1832517E235899C40005AC0B /* LaunchScreen.storyboard */; };
+		1832518D23589FC10005AC0B /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832518C23589FC10005AC0B /* PlaceService.swift */; };
+		183251902358C0840005AC0B /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832518F2358C0840005AC0B /* DataModel.swift */; };
+		183251932358C3D40005AC0B /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251922358C3D40005AC0B /* PlaceModel.swift */; };
+		183251962358C51C0005AC0B /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251952358C51C0005AC0B /* LocationModel.swift */; };
+		1832519A2358C6130005AC0B /* GeometryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251992358C6130005AC0B /* GeometryModel.swift */; };
+		1832519C2358C67F0005AC0B /* ViewportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832519B2358C67F0005AC0B /* ViewportModel.swift */; };
+		183251A02358C75E0005AC0B /* OpeningHoursModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832519F2358C75E0005AC0B /* OpeningHoursModel.swift */; };
+		183251A32358C7C90005AC0B /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251A22358C7C90005AC0B /* PhotosModel.swift */; };
+		183251A62358C8900005AC0B /* PlusCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251A52358C8900005AC0B /* PlusCodeModel.swift */; };
+		185349922364650E0092D3BF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185349912364650E0092D3BF /* SearchViewController.swift */; };
+		18F4F9C1235D573B00707925 /* BasePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4F9C0235D573B00707925 /* BasePopupView.swift */; };
+		18F4F9C4235D579A00707925 /* ListSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4F9C3235D579A00707925 /* ListSearchView.swift */; };
+		18F4F9C6235D57B900707925 /* ListSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F4F9C5235D57B900707925 /* ListSearchView.xib */; };
+		18F4F9CA235DB95100707925 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4F9C9235DB95100707925 /* Toast.swift */; };
+		66B8623CE46D369B3E59087E /* Pods_GoogleMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5869257C8EA5FF739F4F0 /* Pods_GoogleMap.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05A5869257C8EA5FF739F4F0 /* Pods_GoogleMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180834C923615EF50000874F /* Extension + DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + DropShadow.swift"; sourceTree = "<group>"; };
+		18283C2023597240009FA868 /* ListSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchViewController.swift; sourceTree = "<group>"; };
+		18283C232359727A009FA868 /* ListSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchTableViewCell.swift; sourceTree = "<group>"; };
+		18283C242359727A009FA868 /* ListSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSearchTableViewCell.xib; sourceTree = "<group>"; };
+		18283C2A2359AFAD009FA868 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		182D1E962362FF7600035570 /* PopupTopographicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTopographicViewController.swift; sourceTree = "<group>"; };
+		182D1E98236300A500035570 /* Extension + RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + RoundCorners.swift"; sourceTree = "<group>"; };
+		18325172235899C30005AC0B /* GoogleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18325175235899C30005AC0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		18325177235899C30005AC0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1832517A235899C30005AC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1832517C235899C40005AC0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1832517F235899C40005AC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		18325181235899C40005AC0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1832518C23589FC10005AC0B /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
+		1832518F2358C0840005AC0B /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		183251922358C3D40005AC0B /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		183251952358C51C0005AC0B /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		183251992358C6130005AC0B /* GeometryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryModel.swift; sourceTree = "<group>"; };
+		1832519B2358C67F0005AC0B /* ViewportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewportModel.swift; sourceTree = "<group>"; };
+		1832519F2358C75E0005AC0B /* OpeningHoursModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningHoursModel.swift; sourceTree = "<group>"; };
+		183251A22358C7C90005AC0B /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
+		183251A52358C8900005AC0B /* PlusCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusCodeModel.swift; sourceTree = "<group>"; };
+		185349912364650E0092D3BF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		18F4F9C0235D573B00707925 /* BasePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupView.swift; sourceTree = "<group>"; };
+		18F4F9C3235D579A00707925 /* ListSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchView.swift; sourceTree = "<group>"; };
+		18F4F9C5235D57B900707925 /* ListSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSearchView.xib; sourceTree = "<group>"; };
+		18F4F9C9235DB95100707925 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		C073CDB0B82E797C63BC6438 /* Pods-GoogleMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMap.debug.xcconfig"; path = "Target Support Files/Pods-GoogleMap/Pods-GoogleMap.debug.xcconfig"; sourceTree = "<group>"; };
+		F77FEADDA3DD47D7A8F6E4F1 /* Pods-GoogleMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMap.release.xcconfig"; path = "Target Support Files/Pods-GoogleMap/Pods-GoogleMap.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1832516F235899C30005AC0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66B8623CE46D369B3E59087E /* Pods_GoogleMap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18283C1F235971FB009FA868 /* ListSearch */ = {
+			isa = PBXGroup;
+			children = (
+				18283C2023597240009FA868 /* ListSearchViewController.swift */,
+				18F4F9C7235D5FFB00707925 /* ViewListSearch */,
+				18283C222359725B009FA868 /* Cell */,
+			);
+			path = ListSearch;
+			sourceTree = "<group>";
+		};
+		18283C222359725B009FA868 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18283C232359727A009FA868 /* ListSearchTableViewCell.swift */,
+				18283C242359727A009FA868 /* ListSearchTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18283C292359AF9F009FA868 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18283C2A2359AFAD009FA868 /* Extension.swift */,
+				180834C923615EF50000874F /* Extension + DropShadow.swift */,
+				182D1E98236300A500035570 /* Extension + RoundCorners.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		182D1E952362FF3000035570 /* PopupTopographicVC */ = {
+			isa = PBXGroup;
+			children = (
+				182D1E962362FF7600035570 /* PopupTopographicViewController.swift */,
+			);
+			path = PopupTopographicVC;
+			sourceTree = "<group>";
+		};
+		18325169235899C30005AC0B = {
+			isa = PBXGroup;
+			children = (
+				18325174235899C30005AC0B /* GoogleMap */,
+				18325173235899C30005AC0B /* Products */,
+				EE8193F85BD4E741115BA683 /* Pods */,
+				2C690BBAF5E1C9097B4BFD4F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		18325173235899C30005AC0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18325172235899C30005AC0B /* GoogleMap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18325174235899C30005AC0B /* GoogleMap */ = {
+			isa = PBXGroup;
+			children = (
+				18F4F9BF235D572B00707925 /* Base */,
+				18283C292359AF9F009FA868 /* Extension */,
+				1832518E2358C0650005AC0B /* Model */,
+				1832518A23589F820005AC0B /* Moya */,
+				1832518723589C4F0005AC0B /* Home */,
+				18534990236464CA0092D3BF /* SearchVC */,
+				182D1E952362FF3000035570 /* PopupTopographicVC */,
+				18283C1F235971FB009FA868 /* ListSearch */,
+				1832518923589C8D0005AC0B /* View */,
+				18F4F9C8235DB93C00707925 /* Toast */,
+				1832518823589C6A0005AC0B /* Support */,
+			);
+			path = GoogleMap;
+			sourceTree = "<group>";
+		};
+		1832518723589C4F0005AC0B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				18325177235899C30005AC0B /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1832518823589C6A0005AC0B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				18325175235899C30005AC0B /* AppDelegate.swift */,
+				1832517C235899C40005AC0B /* Assets.xcassets */,
+				18325181235899C40005AC0B /* Info.plist */,
+				1832517E235899C40005AC0B /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		1832518923589C8D0005AC0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18325179235899C30005AC0B /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1832518A23589F820005AC0B /* Moya */ = {
+			isa = PBXGroup;
+			children = (
+				1832518B23589F940005AC0B /* Service */,
+			);
+			path = Moya;
+			sourceTree = "<group>";
+		};
+		1832518B23589F940005AC0B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1832518C23589FC10005AC0B /* PlaceService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1832518E2358C0650005AC0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1832518F2358C0840005AC0B /* DataModel.swift */,
+				183251912358C3C30005AC0B /* PlaceModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		183251912358C3C30005AC0B /* PlaceModel */ = {
+			isa = PBXGroup;
+			children = (
+				183251922358C3D40005AC0B /* PlaceModel.swift */,
+				183251982358C5ED0005AC0B /* GeometryModel */,
+				1832519D2358C7280005AC0B /* OpeningHoursModel */,
+				183251A12358C7B20005AC0B /* PhotosModel */,
+				183251A42358C86F0005AC0B /* PlusCodeModel */,
+			);
+			path = PlaceModel;
+			sourceTree = "<group>";
+		};
+		183251942358C50A0005AC0B /* LocationModel */ = {
+			isa = PBXGroup;
+			children = (
+				183251952358C51C0005AC0B /* LocationModel.swift */,
+			);
+			path = LocationModel;
+			sourceTree = "<group>";
+		};
+		183251972358C5B40005AC0B /* ViewportModel */ = {
+			isa = PBXGroup;
+			children = (
+				1832519B2358C67F0005AC0B /* ViewportModel.swift */,
+			);
+			path = ViewportModel;
+			sourceTree = "<group>";
+		};
+		183251982358C5ED0005AC0B /* GeometryModel */ = {
+			isa = PBXGroup;
+			children = (
+				183251992358C6130005AC0B /* GeometryModel.swift */,
+				183251942358C50A0005AC0B /* LocationModel */,
+				183251972358C5B40005AC0B /* ViewportModel */,
+			);
+			path = GeometryModel;
+			sourceTree = "<group>";
+		};
+		1832519D2358C7280005AC0B /* OpeningHoursModel */ = {
+			isa = PBXGroup;
+			children = (
+				1832519F2358C75E0005AC0B /* OpeningHoursModel.swift */,
+			);
+			path = OpeningHoursModel;
+			sourceTree = "<group>";
+		};
+		183251A12358C7B20005AC0B /* PhotosModel */ = {
+			isa = PBXGroup;
+			children = (
+				183251A22358C7C90005AC0B /* PhotosModel.swift */,
+			);
+			path = PhotosModel;
+			sourceTree = "<group>";
+		};
+		183251A42358C86F0005AC0B /* PlusCodeModel */ = {
+			isa = PBXGroup;
+			children = (
+				183251A52358C8900005AC0B /* PlusCodeModel.swift */,
+			);
+			path = PlusCodeModel;
+			sourceTree = "<group>";
+		};
+		18534990236464CA0092D3BF /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				185349912364650E0092D3BF /* SearchViewController.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		18F4F9BF235D572B00707925 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				18F4F9C0235D573B00707925 /* BasePopupView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		18F4F9C7235D5FFB00707925 /* ViewListSearch */ = {
+			isa = PBXGroup;
+			children = (
+				18F4F9C3235D579A00707925 /* ListSearchView.swift */,
+				18F4F9C5235D57B900707925 /* ListSearchView.xib */,
+			);
+			path = ViewListSearch;
+			sourceTree = "<group>";
+		};
+		18F4F9C8235DB93C00707925 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				18F4F9C9235DB95100707925 /* Toast.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		2C690BBAF5E1C9097B4BFD4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05A5869257C8EA5FF739F4F0 /* Pods_GoogleMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE8193F85BD4E741115BA683 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C073CDB0B82E797C63BC6438 /* Pods-GoogleMap.debug.xcconfig */,
+				F77FEADDA3DD47D7A8F6E4F1 /* Pods-GoogleMap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18325171235899C30005AC0B /* GoogleMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18325184235899C40005AC0B /* Build configuration list for PBXNativeTarget "GoogleMap" */;
+			buildPhases = (
+				E9A05F5778244E89E5739F57 /* [CP] Check Pods Manifest.lock */,
+				1832516E235899C30005AC0B /* Sources */,
+				1832516F235899C30005AC0B /* Frameworks */,
+				18325170235899C30005AC0B /* Resources */,
+				C6DD4A46C2FD0BF626C5CA3A /* [CP] Embed Pods Frameworks */,
+				4796179740EC409AADC3AE15 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoogleMap;
+			productName = GoogleMap;
+			productReference = 18325172235899C30005AC0B /* GoogleMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1832516A235899C30005AC0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = DuyLiem;
+				TargetAttributes = {
+					18325171235899C30005AC0B = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1832516D235899C30005AC0B /* Build configuration list for PBXProject "GoogleMap" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 18325169235899C30005AC0B;
+			productRefGroup = 18325173235899C30005AC0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18325171235899C30005AC0B /* GoogleMap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18325170235899C30005AC0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18325180235899C40005AC0B /* LaunchScreen.storyboard in Resources */,
+				18283C262359727A009FA868 /* ListSearchTableViewCell.xib in Resources */,
+				1832517D235899C40005AC0B /* Assets.xcassets in Resources */,
+				18F4F9C6235D57B900707925 /* ListSearchView.xib in Resources */,
+				1832517B235899C30005AC0B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4796179740EC409AADC3AE15 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6DD4A46C2FD0BF626C5CA3A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoogleMap/Pods-GoogleMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9A05F5778244E89E5739F57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoogleMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1832516E235899C30005AC0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18283C2B2359AFAD009FA868 /* Extension.swift in Sources */,
+				18325178235899C30005AC0B /* ViewController.swift in Sources */,
+				183251902358C0840005AC0B /* DataModel.swift in Sources */,
+				183251932358C3D40005AC0B /* PlaceModel.swift in Sources */,
+				183251A02358C75E0005AC0B /* OpeningHoursModel.swift in Sources */,
+				18283C252359727A009FA868 /* ListSearchTableViewCell.swift in Sources */,
+				18F4F9CA235DB95100707925 /* Toast.swift in Sources */,
+				1832518D23589FC10005AC0B /* PlaceService.swift in Sources */,
+				182D1E99236300A500035570 /* Extension + RoundCorners.swift in Sources */,
+				18F4F9C1235D573B00707925 /* BasePopupView.swift in Sources */,
+				183251A62358C8900005AC0B /* PlusCodeModel.swift in Sources */,
+				185349922364650E0092D3BF /* SearchViewController.swift in Sources */,
+				18283C2123597240009FA868 /* ListSearchViewController.swift in Sources */,
+				1832519A2358C6130005AC0B /* GeometryModel.swift in Sources */,
+				183251A32358C7C90005AC0B /* PhotosModel.swift in Sources */,
+				182D1E972362FF7600035570 /* PopupTopographicViewController.swift in Sources */,
+				183251962358C51C0005AC0B /* LocationModel.swift in Sources */,
+				18F4F9C4235D579A00707925 /* ListSearchView.swift in Sources */,
+				18325176235899C30005AC0B /* AppDelegate.swift in Sources */,
+				1832519C2358C67F0005AC0B /* ViewportModel.swift in Sources */,
+				180834CA23615EF50000874F /* Extension + DropShadow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		18325179235899C30005AC0B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1832517A235899C30005AC0B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1832517E235899C40005AC0B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1832517F235899C40005AC0B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		18325182235899C40005AC0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18325183235899C40005AC0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18325185235899C40005AC0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C073CDB0B82E797C63BC6438 /* Pods-GoogleMap.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5QG27LGGVY;
+				INFOPLIST_FILE = "$(SRCROOT)/GoogleMap/Support/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DuyLiem.GoogleMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18325186235899C40005AC0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F77FEADDA3DD47D7A8F6E4F1 /* Pods-GoogleMap.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5QG27LGGVY;
+				INFOPLIST_FILE = "$(SRCROOT)/GoogleMap/Support/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DuyLiem.GoogleMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1832516D235899C30005AC0B /* Build configuration list for PBXProject "GoogleMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18325182235899C40005AC0B /* Debug */,
+				18325183235899C40005AC0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18325184235899C40005AC0B /* Build configuration list for PBXNativeTarget "GoogleMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18325185235899C40005AC0B /* Debug */,
+				18325186235899C40005AC0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1832516A235899C30005AC0B /* Project object */;
+}
