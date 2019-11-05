@@ -11,9 +11,9 @@ import GoogleMaps
 import GooglePlaces
 import Kingfisher
 
-let KEY = "AIzaSyDiVtNfYdQ1uZ9aGy7plaJ7Ff3J8xZ63rI"
+let KEY_MAP = "AIzaSyDiVtNfYdQ1uZ9aGy7plaJ7Ff3J8xZ63rI"
 let KEY_ROADS = "AIzaSyBecR-RlTBLJi1_n-7Mr_Ydlhy7WzDfdLo"
-
+let KEY_DIRECTIONS = "AIzaSyB4K8NSK4hsNA7jfJ7SuqhIBMhUxOgcMZQ"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey(KEY)
-        GMSPlacesClient.provideAPIKey(KEY)
+        GMSServices.provideAPIKey(KEY_MAP)
+        GMSPlacesClient.provideAPIKey(KEY_MAP)
         // Override point for customization after application launch.
         return true
     }

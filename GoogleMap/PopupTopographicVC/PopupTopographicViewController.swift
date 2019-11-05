@@ -7,15 +7,22 @@
 //
 
 import UIKit
+enum Topgraphic: Int {
+    case terrain = 0
+    case normal = 1
+    case hybird = 2
+}
 
-class PopupTopographicViewController: UIViewController {
+final class PopupTopographicViewController: UIViewController {
 
     //MARK: - Outlet
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var viewPopup: UIView!
-    @IBOutlet var firstView: UIView!
+    @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var viewPopup: UIView!
+    @IBOutlet private var firstView: UIView!
     
     //MARK: - Properties
+    var tag = 0;
+    var topgraphicClosures: ((_ topgraphic: Topgraphic) -> Void)?
     
     //MARK: - View Lyfe Cycle
     override func viewDidLoad() {
@@ -25,9 +32,31 @@ class PopupTopographicViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         firstView.addGestureRecognizer(tap)
+        let views = stackView.subviews
+        for view in views {
+            if view is UIButton {
+                let btn = view as? UIButton
+                btn?.tag = tag
+                btn?.addTarget(self, action: #selector(btnClick(_:)), for: .touchUpInside)
+            }
+            tag += 1
+        }
     }
     
     //MARK: - Function
+    @objc func btnClick(_ sender: UIButton) {
+        switch sender.tag {
+        case Topgraphic.terrain.rawValue:
+            topgraphicClosures?(.terrain)
+        case Topgraphic.normal.rawValue:
+            topgraphicClosures?(.normal)
+        case Topgraphic.hybird.rawValue:
+            topgraphicClosures?(.hybird)
+        default:
+            topgraphicClosures?(.normal)
+        }
+    }
+    
     @objc func tapGesture(_ tap: UITapGestureRecognizer) {
 //        removeAnimate()
         dismiss(animated: true, completion: nil)
