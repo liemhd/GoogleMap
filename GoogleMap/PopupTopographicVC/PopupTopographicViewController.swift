@@ -27,7 +27,8 @@ final class PopupTopographicViewController: UIViewController {
     //MARK: - View Lyfe Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-         viewPopup.roundCorners(corners: [.topLeft, .topRight], radius: 6)
+        viewPopup.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
+//         viewPopup.roundCorners(corners: [.topLeft, .topRight], radius: 6)
 //        showAnimate()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))

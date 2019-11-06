@@ -21,6 +21,8 @@ final class SearchViewController: UIViewController, UITextFieldDelegate {
     var arrSearch: [String] = []
     var searchClouse: ((_ search: String) -> Void)?
     var arrSearchClosures: ((_ arrSearch:[String]) -> Void)?
+    var topgraphicClosures: ((_ topgraphic: Topgraphic) -> Void)?
+    var topgraphic: Topgraphic = .normal
     
     //MARK: - View lyfe cycle
     override func viewDidLoad() {
@@ -31,7 +33,8 @@ final class SearchViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Function
     func configUI() {
-       
+        UIApplication.shared.statusBarStyle = .default
+        
         textFieldSearch.text = textSearch
         textFieldSearch.delegate = self
         textFieldSearch.returnKeyType = .search
@@ -80,6 +83,7 @@ final class SearchViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Action
     @IBAction private func btnActionBack(_ sender: Any) {
         arrSearchClosures?(arrSearch)
+        topgraphicClosures?(topgraphic)
         textFieldSearch.resignFirstResponder()
         dismiss(animated: true, completion: nil)
         

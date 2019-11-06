@@ -26,31 +26,31 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var btnMicro: UIButton!
     @IBOutlet private weak var btnUser: UIButton!
     @IBOutlet private weak var viewTable: UIView!
-    @IBOutlet weak var viewRoadInfo: UIView!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet private weak var viewRoadInfo: UIView!
+    @IBOutlet private weak var timeLabel: UILabel!
     
     //MARK: - Properties
     private let locationManager = CLLocationManager()
     var itemsProvider = MoyaProvider<PlaceService>()
     var locationUser: CLLocationCoordinate2D?
-    var locationSearch: CLLocation?
     var arrPlace: [PlaceModel] = []
     var arrLegs: [LegsModel] = []
     var myGroup = DispatchGroup()
-    var isHiddenAllView = true
     var defaultOffSet: CGPoint?
     var minYTableView: CGFloat?
-    var tableViewOriginY: CGFloat?
     private var arrSearch: [String] = []
+    
     var polyline = GMSPolyline()
     var marker: GMSMarker? = nil
-    
     var animationPolyline = GMSPolyline()
     var path = GMSPath()
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var timer: Timer!
+    
+    var isHiddenAllView = true
     var isHiddenViewDirection: Bool = true
+    var topgraphic: Topgraphic = .normal
     
     //MARK: - View Lyfe Cycle
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ final class HomeViewController: UIViewController {
         responseSearchTableView.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
     }
     
-    func configView() {
+    private func configView() {
         responseSearchTableView.delegate = self
         responseSearchTableView.dataSource = self
         responseSearchTableView.register(UINib(nibName: ListSearchTableViewCell.name, bundle: nil), forCellReuseIdentifier: ListSearchTableViewCell.name)
@@ -115,6 +115,7 @@ final class HomeViewController: UIViewController {
         let searchVC = sb.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
         searchVC.textSearch = textSearch
         searchVC.arrSearch = arrSearch
+        searchVC.topgraphic = self.topgraphic
         
         searchVC.searchClouse = { [weak self ] (search: String) in
             guard let wSelf = self else {return}
@@ -131,10 +132,21 @@ final class HomeViewController: UIViewController {
             wSelf.arrSearch = arrSearch
         }
         
+        searchVC.topgraphicClosures = { [weak self] (topgraphic: Topgraphic) in
+            guard let _ = self else {return}
+            
+            switch topgraphic {
+            case .terrain, .normal:
+                UIApplication.shared.statusBarStyle = .default
+            default:
+                UIApplication.shared.statusBarStyle = .lightContent
+            }
+        }
+        
         present(searchVC, animated: true, completion: nil)
     }
     
-   func changedLocationBtn() {
+    private func changedLocationBtn() {
         if self.btnShowList.isHidden == false {
             mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
 
@@ -173,6 +185,7 @@ final class HomeViewController: UIViewController {
     
     private func getDataDirectionAPI(origin: String, destination: String, avoid: String) {
         myGroup.enter()
+        self.arrLegs.removeAll()
         itemsProvider.request(.directions(origin: origin, destination: destination, avoid: avoid)) { [weak self] (result) in
             guard let wSelf = self else {return}
             switch result {
@@ -204,7 +217,7 @@ final class HomeViewController: UIViewController {
                     wSelf.polyline.strokeColor = .blue
                     wSelf.polyline.strokeWidth = 3.0
                     wSelf.polyline.map = wSelf.mapView
-                     wSelf.timer = Timer.scheduledTimer(timeInterval: 0.003, target: wSelf, selector: #selector(wSelf.animatePolylinePath), userInfo: nil, repeats: true)
+                    wSelf.timer = Timer.scheduledTimer(timeInterval: 0.003, target: wSelf, selector: #selector(wSelf.animatePolylinePath), userInfo: nil, repeats: true)
                 }
                
                 wSelf.myGroup.leave()
@@ -251,15 +264,7 @@ final class HomeViewController: UIViewController {
         return newImage
     }
     
-    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-        guard let locationUser = locationUser else {
-            return true
-        }
-        forcusLocation(locationUser, zoom: 15)
-        return true
-    }
-    
-    func loadIndicator(isHidden: Bool) {
+    private func loadIndicator(isHidden: Bool) {
         indicator.isHidden = isHidden
         if isHidden == false {
             indicator.startAnimating()
@@ -270,10 +275,8 @@ final class HomeViewController: UIViewController {
     
     private func setMyGroup(_ searchPlace: String) {
         myGroup.notify(queue: DispatchQueue.main) {
-            
-            self.mapView.clear()
-            
             guard let locationUser = self.locationUser else {return}
+            
             let locationSearch = CLLocationCoordinate2D(latitude: (self.arrPlace[0].geometry?.location?.lat ?? 21.001218), longitude: (self.arrPlace[0].geometry?.location?.lng ?? 105.800716))
             
             let bounds = GMSCoordinateBounds(coordinate: locationUser, coordinate: locationSearch)
@@ -282,78 +285,59 @@ final class HomeViewController: UIViewController {
             self.loadIndicator(isHidden: true)
             
             if self.arrPlace.count > 1 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.viewTable.isHidden = false
-                })
                 
                 if self.isHiddenViewDirection == false {
-                    UIView.animate(withDuration: 0.3, animations: {
+                    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                        self.viewRoadInfo.alpha = 1
+                        self.viewTable.alpha = 0
+                    }, completion: { _ in
                         self.viewRoadInfo.isHidden = false
-                    })
-                }
-                self.responseSearchTableView.reloadData()
-                
-            } else if self.arrPlace.count == 1 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.viewRoadInfo.isHidden = false
-                    
-                    self.setMarker(position: locationSearch, title: searchPlace)
+                        self.viewTable.isHidden = true
+                        self.responseSearchTableView.reloadData()
 
-                    self.getDataDirectionAPI(origin: "\(locationUser.latitude),\(locationUser.longitude)", destination: "\(locationSearch.latitude),\(locationSearch.longitude)", avoid: "highways")
-                })
-            } else {
-                return
+                    })
+                    
+                    self.isHiddenViewDirection = true
+
+                } else {
+                    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                        self.viewTable.alpha = 1
+                    }, completion: { _ in
+                        self.viewTable.isHidden = false
+                        self.responseSearchTableView.reloadData()
+
+                    })
+                    self.isHiddenViewDirection = false
+                }
+
             }
             
-//            if self.arrPlace.count > 1 {
-//                if self.isHiddenViewDirection == false {
-//                    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-//                        self.viewRoadInfo.alpha = 1
-//                    }, completion: { _ in
-//                        self.viewRoadInfo.isHidden = false
-//                        self.responseSearchTableView.reloadData()
-//
-//                    })
-//                    self.setMarker(position: locationSearch, title: searchPlace)
-//
-//                    self.getDataDirectionAPI(origin: "\(locationUser.latitude),\(locationUser.longitude)", destination: "\(locationSearch.latitude),\(locationSearch.longitude)", avoid: "highways")
-//
-//                    self.isHiddenViewDirection = true
-//
-//                } else {
-//                    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-//                        self.viewTable.alpha = 1
-//                    }, completion: { _ in
-//                        self.viewTable.isHidden = false
-//                        self.responseSearchTableView.reloadData()
-//
-//                    })
-//                    self.isHiddenViewDirection = false
-//                }
-//
-//            }
+            if self.arrPlace.count == 1 {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                    self.viewRoadInfo.alpha = 1
+                }, completion: { _ in
+                    self.viewRoadInfo.isHidden = false
+                    self.responseSearchTableView.reloadData()
+
+                })
+                
+                self.isHiddenViewDirection = true
+
+                self.setMarker(position: locationSearch, title: searchPlace)
+
+                self.getDataDirectionAPI(origin: "\(locationUser.latitude),\(locationUser.longitude)", destination: "\(locationSearch.latitude),\(locationSearch.longitude)", avoid: "highways")
+                
+                
+
+            }
             
-//            if self.arrPlace.count == 1 {
-//                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-//                    self.viewRoadInfo.alpha = 1
-//                }, completion: { _ in
-//                    self.viewRoadInfo.isHidden = false
-//                    self.responseSearchTableView.reloadData()
-//
-//                })
-//
-//                self.isHiddenViewDirection = true
-//
-//                self.setMarker(position: locationSearch, title: searchPlace)
-//
-//                self.getDataDirectionAPI(origin: "\(locationUser.latitude),\(locationUser.longitude)", destination: "\(locationSearch.latitude),\(locationSearch.longitude)", avoid: "highways")
-//
-//            }
+            guard let timer = self.timer else {return}
+            timer.invalidate()
             
         }
     }
     
-    func setMarker(position: CLLocationCoordinate2D, title: String) {
+    private func setMarker(position: CLLocationCoordinate2D, title: String) {
         self.marker = GMSMarker(position: position)
         self.marker?.icon = GMSMarker.markerImage(with: .red)
         self.marker?.title = title
@@ -362,16 +346,17 @@ final class HomeViewController: UIViewController {
     
     
     //MARK: - Action
-    @IBAction func btnActionOptional(_ sender: Any) {
+    @IBAction private func btnActionOptional(_ sender: Any) {
     }
-    @IBAction func btnActionStart(_ sender: Any) {
+    @IBAction private func btnActionStart(_ sender: Any) {
     }
-    @IBAction func btnActionMenu(_ sender: Any) {
+    @IBAction private func btnActionMenu(_ sender: Any) {
     }
-    @IBAction func btnActionMicro(_ sender: Any) {
+    @IBAction private func btnActionMicro(_ sender: Any) {
     }
-    @IBAction func btnActionLogin(_ sender: Any) {
-        guard let checkImage = btnUser.currentImage?.isEqual(UIImage(named: "imv_user")) else {
+    @IBAction private func btnActionLogin(_ sender: Any) {
+        guard let checkImage = btnUser.currentImage?.isEqual(UIImage(named: "imv_user")),
+                let locationUser = locationUser else {
             return
         }
         if (checkImage) {
@@ -390,6 +375,7 @@ final class HomeViewController: UIViewController {
                 self.btnShowList.isHidden = true
                 self.loadIndicator(isHidden: true)
                 self.mapView.clear()
+                self.forcusLocation(locationUser, zoom: 15)
                 self.view.layoutIfNeeded()
                 guard let timer = self.timer else {return}
                 timer.invalidate()
@@ -397,7 +383,7 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func btnActionShowList(_ sender: Any) {
+    @IBAction private func btnActionShowList(_ sender: Any) {
         
         heightView.constant = 200
 
@@ -410,7 +396,7 @@ final class HomeViewController: UIViewController {
         })
     }
     
-    @IBAction func btnActionTopographic(_ sender: Any) {
+    @IBAction private func btnActionTopographic(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "Topographic") as! PopupTopographicViewController
         
@@ -419,12 +405,15 @@ final class HomeViewController: UIViewController {
             switch topgraphic {
             case .terrain:
                 wSelf.mapView.mapType = .terrain
+                wSelf.topgraphic = .terrain
                 UIApplication.shared.statusBarStyle = .default
             case .normal:
                 wSelf.mapView.mapType = .normal
+                wSelf.topgraphic = .normal
                 UIApplication.shared.statusBarStyle = .default
             case .hybird:
                 wSelf.mapView.mapType = .hybrid
+                wSelf.topgraphic = .hybird
                 UIApplication.shared.statusBarStyle = .lightContent
             }
         }
@@ -454,85 +443,74 @@ extension HomeViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         
-        
         if isHiddenAllView == true {
             UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                 self.viewSearch.alpha = 0
                 self.btnShowList.alpha = 0
-                self.viewTable.alpha = 0
                 self.btnSetTopographic.alpha = 0
             }, completion: { _ in
+                
+                mapView.settings.myLocationButton = false
+                
                 self.viewSearch.isHidden = true
                 self.btnShowList.isHidden = true
-                mapView.settings.myLocationButton = false
-                self.viewTable.isHidden = true
                 self.btnSetTopographic.isHidden = true
                 UIApplication.shared.isStatusBarHidden = true
                 self.changedLocationBtn()
             })
             
-            if isHiddenViewDirection == true {
-                if arrPlace.count != 0 {
-                    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-                        self.viewRoadInfo.alpha = 0
-                    }, completion: { _ in
-                        self.viewRoadInfo.isHidden = true
-                    })
-                }
+            if arrPlace.count > 1 {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                    self.viewTable.alpha = 0
+                    self.viewRoadInfo.alpha = 0
+                }, completion: { _ in
+                    self.viewTable.isHidden = true
+                    self.viewRoadInfo.isHidden = true
+                })
+                isHiddenViewDirection = true
                 
-                isHiddenViewDirection = false
+            }
+            
+            if arrPlace.count == 1 {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                    self.viewRoadInfo.alpha = 0
+                }, completion: { _ in
+                    self.viewRoadInfo.isHidden = true
+                })
+                isHiddenViewDirection = true
             }
             
             isHiddenAllView = false
             
         } else {
             
-//            if arrPlace.count == 1 {
-//                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-//                    self.viewRoadInfo.alpha = 1
-//                }, completion: { _ in
-//                    self.viewRoadInfo.isHidden = false
-//                })
-//            }
+            if arrPlace.count == 1 {
+                UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                    self.viewRoadInfo.alpha = 1
+                }, completion: { _ in
+                    self.viewRoadInfo.isHidden = false
+                })
+                
+                self.isHiddenViewDirection = true
+            }
             
-            if isHiddenViewDirection == false {
-                if arrPlace.count == 1 {
+            if arrPlace.count > 1 {
+                if self.isHiddenViewDirection == false {
                     UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                         self.viewRoadInfo.alpha = 1
-                        self.btnShowList.alpha = 0
                     }, completion: { _ in
                         self.viewRoadInfo.isHidden = false
-                        self.btnShowList.isHidden = true
                     })
-//                     checkViewDirection = true
-                }
-                else {
-                    if arrPlace.count > 1 {
-                        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-                            self.btnShowList.alpha = 1
-                        }, completion: { _ in
-                            self.viewTable.isHidden = false
-                            self.btnShowList.isHidden = false
-                            self.changedLocationBtn()
-                        })
-                    }
-
-//                    checkViewDirection = false
-                }
-                isHiddenViewDirection = true
-               
-            } else {
-                if arrPlace.count > 1 {
+                    
+                } else {
                     UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                         self.btnShowList.alpha = 1
                     }, completion: { _ in
-                        self.viewTable.isHidden = false
                         self.btnShowList.isHidden = false
                         self.changedLocationBtn()
                     })
                 }
-
-                isHiddenViewDirection = true
+                self.isHiddenViewDirection = false
             }
             
             UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
@@ -547,7 +525,9 @@ extension HomeViewController: GMSMapViewDelegate {
             
             isHiddenAllView = true
         }
+        print(isHiddenViewDirection)
     }
+    
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -662,25 +642,25 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mapView.clear()
         
-        let coor = CLLocationCoordinate2D(latitude: (self.arrPlace[indexPath.row].geometry?.location?.lat ?? 21.001218), longitude: (self.arrPlace[indexPath.row].geometry?.location?.lng ?? 105.800716))
-        let title = arrPlace[indexPath.row].name
-        self.setMarker(position: coor, title: title ?? "")
-        
         let sb = UIStoryboard(name: "Main", bundle: nil)
         guard let detailVC = sb.instantiateViewController(withIdentifier: "DetailPlace") as? DetailPlaceViewController else {
             return
         }
         
+        let coorSelected = CLLocationCoordinate2D(latitude: (self.arrPlace[indexPath.row].geometry?.location?.lat ?? 21.001218), longitude: (self.arrPlace[indexPath.row].geometry?.location?.lng ?? 105.800716))
+        let title = self.arrPlace[indexPath.row].name
+        self.setMarker(position: coorSelected, title: title ?? "")
+        
         detailVC.directionClosures = { [weak self] (placeData: PlaceModel) in
             
             guard let wSelf = self,
-                   let latitude = placeData.geometry?.location?.lat,
-                   let longitude = placeData.geometry?.location?.lng,
-                   let locationUser = wSelf.locationUser,
-                   let nameSearch = placeData.name else {
+                let latitude = placeData.geometry?.location?.lat,
+                let longitude = placeData.geometry?.location?.lng,
+                let locationUser = wSelf.locationUser,
+                   let searchName = placeData.name else {
                 return
             }
-            self?.setMyGroup(nameSearch)
+            
             wSelf.isHiddenViewDirection = false
             
             let bounds = GMSCoordinateBounds(coordinate: locationUser, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
@@ -688,6 +668,8 @@ extension HomeViewController: UITableViewDelegate {
             
             let coor = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             wSelf.getDataDirectionAPI(origin: "\(locationUser.latitude),\(locationUser.longitude)", destination: "\(coor.latitude),\(coor.longitude)", avoid: "highways")
+            
+            wSelf.setMyGroup(searchName)
         }
         
         detailVC.placeData = arrPlace[indexPath.row]
@@ -752,5 +734,3 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
 
     }
 }
-
-
