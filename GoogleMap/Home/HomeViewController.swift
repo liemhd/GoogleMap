@@ -15,12 +15,14 @@ import GooglePlaces
 final class HomeViewController: UIViewController {
     
     //MARK: - Outlet
+    @IBOutlet weak var topViewTableView: NSLayoutConstraint!
+    @IBOutlet weak var btnMenu: UIButton!
+    @IBOutlet weak var heightViewTable: NSLayoutConstraint!
     @IBOutlet private weak var textFieldSearch: UITextField!
     @IBOutlet private weak var viewSearch: UIView!
     @IBOutlet private weak var mapView: GMSMapView!
     @IBOutlet private weak var responseSearchTableView: UITableView!
     @IBOutlet private weak var btnShowList: UIButton!
-    @IBOutlet private weak var heightView: NSLayoutConstraint!
     @IBOutlet private weak var indicator: UIActivityIndicatorView!
     @IBOutlet private weak var btnSetTopographic: UIButton!
     @IBOutlet private weak var btnMicro: UIButton!
@@ -28,6 +30,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var viewTable: UIView!
     @IBOutlet private weak var viewRoadInfo: UIView!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet weak var viewHeader: UIView!
     
     //MARK: - Properties
     private let locationManager = CLLocationManager()
@@ -36,8 +39,6 @@ final class HomeViewController: UIViewController {
     var arrPlace: [PlaceModel] = []
     var arrLegs: [LegsModel] = []
     var myGroup = DispatchGroup()
-    var defaultOffSet: CGPoint?
-    var minYTableView: CGFloat?
     private var arrSearch: [String] = []
     
     var polyline = GMSPolyline()
@@ -52,6 +53,11 @@ final class HomeViewController: UIViewController {
     var isHiddenViewDirection: Bool = true
     var topgraphic: Topgraphic = .normal
     
+    let fullView: CGFloat = 70
+    var partialView: CGFloat {
+        return 2 / 3 * view.frame.size.height
+    }
+    
     //MARK: - View Lyfe Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +71,70 @@ final class HomeViewController: UIViewController {
         setShadow()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareBackgroundView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: 0.6, animations: { [weak self] in
+            let frame = self?.viewTable.frame
+            let yComponent = self?.partialView
+            self?.viewTable.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 100)
+        })
+    }
+    
     //MARK: - Function
+    func prepareBackgroundView(){
+        let blurEffect = UIBlurEffect.init(style: .dark)
+        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
+        let bluredView = UIVisualEffectView.init(effect: blurEffect)
+        bluredView.contentView.addSubview(visualEffect)
+        
+        visualEffect.frame = UIScreen.main.bounds
+        bluredView.frame = UIScreen.main.bounds
+        
+        viewTable.insertSubview(bluredView, at: 0)
+    }
+    
+    @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+        
+        let translation = recognizer.translation(in: self.viewTable)
+        let velocity = recognizer.velocity(in: self.viewTable)
+        
+        let y = self.viewTable.frame.minY
+        if (y + translation.y >= fullView) && (y + translation.y <= partialView) {
+            self.viewTable.frame = CGRect(x: 0, y: y + translation.y, width: viewTable.frame.width, height: viewTable.frame.height)
+            recognizer.setTranslation(CGPoint.zero, in: self.viewTable)
+        }
+        
+        if recognizer.state == .ended {
+            var duration =  velocity.y < 0 ? Double((y - fullView) / -velocity.y) : Double((partialView - y) / velocity.y )
+            
+            duration = duration > 1.3 ? 1 : duration
+            
+            print(velocity.y)
+            UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
+                if  velocity.y >= 0 {
+                    self.viewTable.frame = CGRect(x: 0, y: self.partialView, width: self.viewTable.frame.width, height: self.viewTable.frame.height)
+                } else {
+                    self.viewTable.frame = CGRect(x: 0, y: self.fullView, width: self.viewTable.frame.width, height: self.viewTable.frame.height)
+                }
+                
+            }, completion: { [weak self] _ in
+                if ( velocity.y < 0 ) {
+                    self?.responseSearchTableView.isScrollEnabled = true
+                }
+            })
+        }
+    }
+    
     private func setShadow() {
         viewSearch.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
+        viewTable.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
         btnShowList.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
-        responseSearchTableView.dropShadow(color: .black, opacity: 0.3, offSet: CGSize.zero, radius: 2, scale: true)
     }
     
     private func configView() {
@@ -77,14 +142,18 @@ final class HomeViewController: UIViewController {
         responseSearchTableView.dataSource = self
         responseSearchTableView.register(UINib(nibName: ListSearchTableViewCell.name, bundle: nil), forCellReuseIdentifier: ListSearchTableViewCell.name)
         
-        //Error tableView
-//        responseSearchTableView.roundCorners(corners: [.topLeft, .topRight], radius: 6)
-
-        heightView.constant = view.frame.size.height / 2
+        NSLayoutConstraint.activate([viewTable.topAnchor.constraint(equalTo: view.topAnchor, constant: 2 / 3 * view.frame.size.height)])
+        
+        
+        let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture(_:)))
+        gesture.delegate = self
+        viewTable.addGestureRecognizer(gesture)
+        
+        heightViewTable.constant = view.frame.size.height - fullView
+        //Error vs tableView
+//        viewHeader.roundCorners(corners: [.topLeft, .topRight], radius: 6)
         
         setShadow()
-        defaultOffSet = responseSearchTableView.frame.origin
-        minYTableView = viewTable.frame.minY
         indicator.isHidden = true
         
         textFieldSearch.addTarget(self, action: #selector(textFieldClick(_:)), for: .editingDidBegin)
@@ -285,7 +354,6 @@ final class HomeViewController: UIViewController {
             self.loadIndicator(isHidden: true)
             
             if self.arrPlace.count > 1 {
-                
                 if self.isHiddenViewDirection == false {
                     UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                         self.viewRoadInfo.alpha = 1
@@ -350,8 +418,23 @@ final class HomeViewController: UIViewController {
     }
     @IBAction private func btnActionStart(_ sender: Any) {
     }
+    
     @IBAction private func btnActionMenu(_ sender: Any) {
+        guard let checkImage = btnMenu.currentImage?.isEqual(UIImage(named: "imv_back")) else {
+            return
+        }
+        
+        if checkImage {
+            polyline.map = nil
+            marker?.map = nil
+            viewRoadInfo.isHidden = true
+            btnShowList.isHidden = false
+            
+        } else {
+            
+        }
     }
+    
     @IBAction private func btnActionMicro(_ sender: Any) {
     }
     @IBAction private func btnActionLogin(_ sender: Any) {
@@ -367,6 +450,7 @@ final class HomeViewController: UIViewController {
                 self.isHiddenViewDirection = true
                 self.isHiddenAllView = true
                 self.btnUser.setImage(UIImage(named: "imv_user"), for: .normal)
+                self.btnMenu.setImage(UIImage(named: "imv_menu"), for: .normal)
                 self.btnUser.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
                 self.textFieldSearch.text = nil
                 self.btnMicro.isHidden = false
@@ -384,9 +468,8 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction private func btnActionShowList(_ sender: Any) {
+        self.viewTable.frame = CGRect(x: 0, y: self.partialView, width: self.viewTable.frame.width, height: self.viewTable.frame.height)
         
-        heightView.constant = 200
-
         UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
             self.btnShowList.alpha = 0
             self.viewTable.alpha = 1
@@ -525,7 +608,7 @@ extension HomeViewController: GMSMapViewDelegate {
             
             isHiddenAllView = true
         }
-        print(isHiddenViewDirection)
+//        print(isHiddenViewDirection)
     }
     
 }
@@ -562,83 +645,6 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 //MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if viewTable.frame.minY == minYTableView {
-//            heightView.constant = view.frame.maxY - viewTable.frame.minY
-//        let hieght = scrollView.frame.size.height
-//        let contentYOffset = scrollView.contentOffset.y
-//        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
-//        if distanceFromBottom < hieght {
-//            print("down")
-//        } else {
-//            print("up")
-//        }
-//        heightView.constant = 700
-//            responseSearchTableView.isScrollEnabled = false
-        
-//        }
-//        if heightView.constant == view.frame.size.height / 2 {
-//            if responseSearchTableView.contentOffset.y == minYTableView {
-//                responseSearchTableView.alwaysBounceVertical = false
-//                heightView.constant += responseSearchTableView.contentOffset.y
-//                self.view.layoutIfNeeded()
-//            }
-        
-//        }
-        print(responseSearchTableView.contentOffset.y)
-        let offset = responseSearchTableView.contentOffset
-//        print(offset.y)
-        if let startOffset = self.defaultOffSet {
-//            print("\(offset.y) ----- \(startOffset.y)")
-            if offset.y < startOffset.y {
-//                print("down")
-                heightView.constant -= 1
-                if heightView.constant == view.frame.size.height / 3 {
-                    UIView.animate(withDuration: 0.3) {
-                        self.viewTable.isHidden = true
-                        self.btnShowList.isHidden = false
-                    }
-                }
-                
-            } else {
-//                print("up")
-                if viewTable.frame.minY > viewSearch.frame.maxY + 1 {
-                    heightView.constant += 1
-                }
-            }
-//            print(startOffset.y - offset.y)
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if(velocity.y > 0){
-            if heightView.constant >= (1 / 3) * view.frame.size.height {
-                heightView.constant = view.frame.maxY - viewSearch.frame.maxY
-            } else {
-                heightView.constant = view.frame.size.height / 2
-            }
-//            print("dragging Up")
-        } else {
-            if viewTable.frame.minY == view.frame.maxY / 2 {
-                if heightView.constant <= (1 / 3) * view.frame.size.height {
-                    viewTable.isHidden = true
-                } else {
-                    heightView.constant = view.frame.size.height / 2
-                }
-            }
-//            print("dragging Down")
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print("scrollViewDidEndDragging")
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mapView.clear()
         
@@ -660,6 +666,8 @@ extension HomeViewController: UITableViewDelegate {
                    let searchName = placeData.name else {
                 return
             }
+            
+            wSelf.btnMenu.setImage(UIImage(named: "imv_back"), for: .normal)
             
             wSelf.isHiddenViewDirection = false
             
@@ -693,12 +701,12 @@ extension HomeViewController: UITableViewDataSource {
             cell.fillData(placeModel: arrPlace[indexPath.row], photo: getDataPlacePhoto(photoReference: photo))
 
         }
-        
+
         guard let latitude = self.arrPlace[indexPath.row].geometry?.location?.lat,
             let longitude = self.arrPlace[indexPath.row].geometry?.location?.lng else {
             return cell
         }
-        
+
         let locationSearch = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let marker = GMSMarker(position: locationSearch)
         guard let str = arrPlace[indexPath.row].icon,
@@ -709,9 +717,8 @@ extension HomeViewController: UITableViewDataSource {
         marker.icon = self.imageWithImage(image: imageIcon, scaledToSize: CGSize(width: 20.0, height: 20.0))
         marker.title = arrPlace[indexPath.row].name
         marker.map = self.mapView
-        
+
         return cell
-        
     }
 }
 
@@ -732,5 +739,21 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
 
+    }
+}
+
+extension HomeViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        let gesture = (gestureRecognizer as! UIPanGestureRecognizer)
+        let direction = gesture.velocity(in: viewTable).y
+        
+        let y = viewTable.frame.minY
+        if (y == fullView && responseSearchTableView.contentOffset.y == 0 && direction > 0) || (y == partialView) {
+            responseSearchTableView.isScrollEnabled = false
+        } else {
+            responseSearchTableView.isScrollEnabled = true
+        }
+        
+        return false
     }
 }

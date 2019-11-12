@@ -20,8 +20,6 @@
 		18010C762369832A005CDC1D /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18010C742369832A005CDC1D /* SearchTableViewCell.xib */; };
 		180834CA23615EF50000874F /* Extension + DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180834C923615EF50000874F /* Extension + DropShadow.swift */; };
 		18103D30236AFBA8005A5BD4 /* OverviewPolylineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18103D2F236AFBA8005A5BD4 /* OverviewPolylineModel.swift */; };
-		18283C252359727A009FA868 /* ListSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18283C232359727A009FA868 /* ListSearchTableViewCell.swift */; };
-		18283C262359727A009FA868 /* ListSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18283C242359727A009FA868 /* ListSearchTableViewCell.xib */; };
 		18283C2B2359AFAD009FA868 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18283C2A2359AFAD009FA868 /* Extension.swift */; };
 		182D1E972362FF7600035570 /* PopupTopographicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D1E962362FF7600035570 /* PopupTopographicViewController.swift */; };
 		182D1E99236300A500035570 /* Extension + RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D1E98236300A500035570 /* Extension + RoundCorners.swift */; };
@@ -40,6 +38,8 @@
 		183251A32358C7C90005AC0B /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251A22358C7C90005AC0B /* PhotosModel.swift */; };
 		183251A62358C8900005AC0B /* PlusCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183251A52358C8900005AC0B /* PlusCodeModel.swift */; };
 		185349922364650E0092D3BF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185349912364650E0092D3BF /* SearchViewController.swift */; };
+		187D9B1C237A9279007A916C /* ListSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D9B1A237A9279007A916C /* ListSearchTableViewCell.swift */; };
+		187D9B1D237A9279007A916C /* ListSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187D9B1B237A9279007A916C /* ListSearchTableViewCell.xib */; };
 		18BD27A0236BDEF500031701 /* DetailPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD279F236BDEF500031701 /* DetailPlaceViewController.swift */; };
 		18BD27A4236BDFCE00031701 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD27A2236BDFCE00031701 /* PhotoTableViewCell.swift */; };
 		18BD27A5236BDFCE00031701 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD27A3236BDFCE00031701 /* PhotoTableViewCell.xib */; };
@@ -68,8 +68,6 @@
 		18010C742369832A005CDC1D /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		180834C923615EF50000874F /* Extension + DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + DropShadow.swift"; sourceTree = "<group>"; };
 		18103D2F236AFBA8005A5BD4 /* OverviewPolylineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewPolylineModel.swift; sourceTree = "<group>"; };
-		18283C232359727A009FA868 /* ListSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchTableViewCell.swift; sourceTree = "<group>"; };
-		18283C242359727A009FA868 /* ListSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSearchTableViewCell.xib; sourceTree = "<group>"; };
 		18283C2A2359AFAD009FA868 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		182D1E962362FF7600035570 /* PopupTopographicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTopographicViewController.swift; sourceTree = "<group>"; };
 		182D1E98236300A500035570 /* Extension + RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + RoundCorners.swift"; sourceTree = "<group>"; };
@@ -90,6 +88,8 @@
 		183251A22358C7C90005AC0B /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		183251A52358C8900005AC0B /* PlusCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusCodeModel.swift; sourceTree = "<group>"; };
 		185349912364650E0092D3BF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		187D9B1A237A9279007A916C /* ListSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchTableViewCell.swift; sourceTree = "<group>"; };
+		187D9B1B237A9279007A916C /* ListSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSearchTableViewCell.xib; sourceTree = "<group>"; };
 		18BD279F236BDEF500031701 /* DetailPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlaceViewController.swift; sourceTree = "<group>"; };
 		18BD27A2236BDFCE00031701 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		18BD27A3236BDFCE00031701 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,15 +223,6 @@
 			path = OverviewPolylineModel;
 			sourceTree = "<group>";
 		};
-		18283C222359725B009FA868 /* CellListSearch */ = {
-			isa = PBXGroup;
-			children = (
-				18283C232359727A009FA868 /* ListSearchTableViewCell.swift */,
-				18283C242359727A009FA868 /* ListSearchTableViewCell.xib */,
-			);
-			path = CellListSearch;
-			sourceTree = "<group>";
-		};
 		18283C292359AF9F009FA868 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				18325177235899C30005AC0B /* HomeViewController.swift */,
-				18283C222359725B009FA868 /* CellListSearch */,
+				187D9B0F237A6874007A916C /* CellListSearch */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -409,6 +400,15 @@
 				18010C72236982DD005CDC1D /* CellSearch */,
 			);
 			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		187D9B0F237A6874007A916C /* CellListSearch */ = {
+			isa = PBXGroup;
+			children = (
+				187D9B1A237A9279007A916C /* ListSearchTableViewCell.swift */,
+				187D9B1B237A9279007A916C /* ListSearchTableViewCell.xib */,
+			);
+			path = CellListSearch;
 			sourceTree = "<group>";
 		};
 		18BD279E236BDEB900031701 /* DetailPlaceVC */ = {
@@ -544,9 +544,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BD27AF236BE57600031701 /* UtilityTableViewCell.xib in Resources */,
+				187D9B1D237A9279007A916C /* ListSearchTableViewCell.xib in Resources */,
 				18BD27A5236BDFCE00031701 /* PhotoTableViewCell.xib in Resources */,
 				18325180235899C40005AC0B /* LaunchScreen.storyboard in Resources */,
-				18283C262359727A009FA868 /* ListSearchTableViewCell.xib in Resources */,
 				1832517D235899C40005AC0B /* Assets.xcassets in Resources */,
 				18BD27AA236BE0A400031701 /* TitleTableViewCell.xib in Resources */,
 				1832517B235899C30005AC0B /* Main.storyboard in Resources */,
@@ -629,12 +629,12 @@
 				18C96A1F236C264D00F655B6 /* Extension + UIViewcontroller.swift in Sources */,
 				18010C7123697577005CDC1D /* PolylineModel.swift in Sources */,
 				183251A02358C75E0005AC0B /* OpeningHoursModel.swift in Sources */,
-				18283C252359727A009FA868 /* ListSearchTableViewCell.swift in Sources */,
 				18010C6A236973E3005CDC1D /* DistanceModel.swift in Sources */,
 				18F4F9CA235DB95100707925 /* Toast.swift in Sources */,
 				18010C752369832A005CDC1D /* SearchTableViewCell.swift in Sources */,
 				1832518D23589FC10005AC0B /* PlaceService.swift in Sources */,
 				182D1E99236300A500035570 /* Extension + RoundCorners.swift in Sources */,
+				187D9B1C237A9279007A916C /* ListSearchTableViewCell.swift in Sources */,
 				18F4F9C1235D573B00707925 /* BasePopupView.swift in Sources */,
 				18010C6423697258005CDC1D /* NortheastModel.swift in Sources */,
 				183251A62358C8900005AC0B /* PlusCodeModel.swift in Sources */,
