@@ -66,8 +66,8 @@ extension DetailPlaceViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.name, for: indexPath) as? PhotoTableViewCell else {
                 return UITableViewCell ()
-                
             }
+            
             guard let photo = placeData?.photos?.first?.photo_reference else { return cell }
             cell.image(imageStr: getDataPlacePhoto(photoReference: photo))
             
@@ -75,8 +75,8 @@ extension DetailPlaceViewController: UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.name, for: indexPath) as? TitleTableViewCell else {
                 return UITableViewCell ()
-                
             }
+            
             guard let placeData = placeData else {return cell}
             cell.fillData(placeData: placeData)
             
@@ -84,8 +84,8 @@ extension DetailPlaceViewController: UITableViewDataSource {
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: UtilityTableViewCell.name, for: indexPath) as? UtilityTableViewCell else {
                 return UITableViewCell ()
-                
             }
+            
             cell.callBack = { [weak self] (type: Callback) in
                 guard let wSelf = self else {return}
                 switch type {

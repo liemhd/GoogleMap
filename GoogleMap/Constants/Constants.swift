@@ -18,4 +18,15 @@ struct Constants {
     public static let minimumInteritemSpacing: CGFloat = 2
     public static let numberOfItems: CGFloat = 5
     public static let fullView: CGFloat = 70
+    
+    public static let yourLocation = "Your location"
+    public static let empty = ""
+    public static let dataOk = "OK"
+    
+    public static let baseUrl = "https://maps.googleapis.com/maps/api/"
+    
+    public static let placeSearch = "place/textsearch/json"
+    public static let placePhoto = "place/photo"
+    public static let directions = "directions/json"
+    public static let headers = ["Content-Type": "application/json"]
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoRoadView: UIView {
+final class InfoRoadView: UIView {
     @IBOutlet weak var timeAndDistanceLabel: UILabel!
     
     override func awakeFromNib() {

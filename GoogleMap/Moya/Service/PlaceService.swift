@@ -10,7 +10,6 @@ import Foundation
 import Moya
 import CoreLocation
 
-
 enum PlaceService {
     case placeSearch(search: String)
     case placeSearchWithLocation(searchPlace: String, location: CLLocationCoordinate2D)
@@ -21,22 +20,22 @@ enum PlaceService {
 extension PlaceService: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/") else {
+        guard let url = URL(string: Constants.baseUrl) else {
             fatalError()
         }
+        
         return url
     }
     
     var path: String {
         switch self {
         case .placeSearchWithLocation(_,_), .placeSearch(_):
-            return "place/textsearch/json"
+            return Constants.placeSearch
         case .placePhoto(_):
-            return "place/photo"
+            return Constants.placePhoto
         case .directions(_,_,_):
-            return "directions/json"
+            return Constants.directions
         }
-        
     }
     
     var method: Moya.Method {
@@ -74,7 +73,7 @@ extension PlaceService: TargetType {
     }
     
     var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+        return Constants.headers
     }
 }
 

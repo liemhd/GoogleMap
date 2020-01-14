@@ -17,7 +17,7 @@ final class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var heightTableView: NSLayoutConstraint!
     
     //MARK: - Properties
-    var textSearch: String = ""
+    var textSearch: String = Constants.empty
     var arrSearch: [String] = []
     var searchClouse: ((_ search: String) -> Void)?
     var arrSearchClosures: ((_ arrSearch:[String], _ topgraphic: Topgraphic) -> Void)?
@@ -90,6 +90,7 @@ final class SearchViewController: UIViewController, UITextFieldDelegate {
         guard let checkImage = btnMicro.currentImage?.isEqual(UIImage(named: "imv_microphone")) else {
             return
         }
+        
         if !checkImage {
             textFieldSearch.text = nil
             btnMicro.setImage(UIImage(named: "imv_microphone"), for: .normal)
@@ -118,7 +119,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             guard let wSelf = self else {return}
             wSelf.arrSearch.remove(at: indexPath.row)
             wSelf.listSearchTableView.reloadData()
-            
         }
         
         return cell

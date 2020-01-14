@@ -44,16 +44,12 @@ final class UtilityTableViewCell: UITableViewCell {
     @objc func btnActionClick(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            print("1")
             callBack?(.direction)
         case 1:
-            print("2")
             callBack?(.gps)
         case 2:
-            print("3")
             callBack?(.call)
         default:
-            print("4")
             callBack?(.save)
         }
     }

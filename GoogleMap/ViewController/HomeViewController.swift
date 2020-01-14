@@ -213,8 +213,8 @@ final class HomeViewController: UIViewController {
             }
             
             if textField.tag == 1 {
-                if textLocation == "Your location" {
-                    searchVC.textSearch = ""
+                if textLocation == Constants.yourLocation {
+                    searchVC.textSearch = Constants.empty
                 } else {
                     searchVC.textSearch = textLocation
                 }
@@ -281,7 +281,7 @@ final class HomeViewController: UIViewController {
                 guard let dataAPI = convertedString else {return}
                 let data = DataModel(JSONString: dataAPI)
                 
-                if data?.status != "OK" {
+                if data?.status != Constants.dataOk {
                     print("OVER_QUERY_LIMIT")
 //                    wSelf.loadIndicator(isHidden: true)
                     wSelf.loadIndicator(isHidden: false)
@@ -318,7 +318,7 @@ final class HomeViewController: UIViewController {
                 guard let dataAPI = convertedString else {return}
                 let data = DataModel(JSONString: dataAPI)
                 
-                if data?.status != "OK" {
+                if data?.status != Constants.dataOk {
                     print("OVER_QUERY_LIMIT")
 //                    ToastView.shared.short(self!.view, txt_msg: "OVER_QUERY_LIMIT")
 //                    return
@@ -346,7 +346,7 @@ final class HomeViewController: UIViewController {
                 let convertedString = String(data: response.data, encoding: String.Encoding.utf8)
                 guard let dataAPI = convertedString else {return}
                 let data = DirectionModel(JSONString: dataAPI)
-                if data?.status != "OK" {
+                if data?.status != Constants.dataOk {
                     ToastView.shared.short(self!.view, txt_msg: "OVER_QUERY_LIMIT")
                     return
                 }
@@ -492,7 +492,7 @@ final class HomeViewController: UIViewController {
             infoRoadView = Bundle.main.loadNibNamed("InfoRoadView", owner: self, options: nil)?.first as? InfoRoadView
             view.addSubview(infoRoadView ?? UIView())
             infoRoadView?.frame = CGRect(x: 0, y: view.frame.maxY - (view.frame.height / 5), width: view.frame.width, height: view.frame.height / 5)
-            infoRoadView?.fillData(data: arrLegs[0].duration?.text ?? "0")
+            infoRoadView?.fillData(data: arrLegs[0].duration?.text ?? Constants.empty)
         }
     }
     

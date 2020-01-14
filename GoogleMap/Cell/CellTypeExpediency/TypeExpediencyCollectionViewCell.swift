@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeExpediencyCollectionViewCell: UICollectionViewCell {
+final class TypeExpediencyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var imvExpediency: UIImageView!
@@ -22,7 +22,6 @@ class TypeExpediencyCollectionViewCell: UICollectionViewCell {
         didSet {
             UIView.animate(withDuration: 0.3) {
                 self.backgroundColor = self.isSelected ? UIColor.orange : UIColor.white
-
             }
         }
     }

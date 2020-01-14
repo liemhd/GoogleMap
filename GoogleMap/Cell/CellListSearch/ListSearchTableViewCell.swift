@@ -9,7 +9,8 @@
 import UIKit
 import Cosmos
 
-class ListSearchTableViewCell: UITableViewCell {
+final class ListSearchTableViewCell: UITableViewCell {
+    
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var imvImage: UIImageView!
     @IBOutlet private weak var typeLabel: UILabel!

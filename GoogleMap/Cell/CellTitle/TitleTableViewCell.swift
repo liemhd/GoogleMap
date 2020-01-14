@@ -23,6 +23,5 @@ final class TitleTableViewCell: UITableViewCell {
         rateLabel.text = "\(placeData.rating ?? 0)"
         cosmosView.rating = placeData.rating ?? 0
         countRateLabel.text = "(\(placeData.user_ratings_total ?? 0))"
-        
     }
 }
