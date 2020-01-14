@@ -12,7 +12,8 @@ import CoreLocation
 
 
 enum PlaceService {
-    case placeSearch(searchPlace: String, location: CLLocationCoordinate2D)
+    case placeSearch(search: String)
+    case placeSearchWithLocation(searchPlace: String, location: CLLocationCoordinate2D)
     case placePhoto(photoReference: String)
     case directions(origin: String, destination: String, avoid: String)
 }
@@ -28,7 +29,7 @@ extension PlaceService: TargetType {
     
     var path: String {
         switch self {
-        case .placeSearch(_,_):
+        case .placeSearchWithLocation(_,_), .placeSearch(_):
             return "place/textsearch/json"
         case .placePhoto(_):
             return "place/photo"
@@ -48,22 +49,26 @@ extension PlaceService: TargetType {
     
     var task: Task {
         switch self {
-        case .placeSearch(let searchPlace, let location):
+        case .placeSearchWithLocation(let searchPlace, let location):
             let parameters = ["radius": "500m",
                                 "query": "\(searchPlace)",
                                 "location": "\(location)",
-                                "key": KEY_MAP]
+                                "key": Constants.KEY_MAP]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .placePhoto(let photoReference):
             let parameters = ["photoreference": "\(photoReference)",
                                 "maxwidth": "400",
-                                "key": KEY_MAP]
+                                "key": Constants.KEY_MAP]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .directions(let origin, let destination, let avoid):
             let parameters = ["origin": "\(origin)",
                                 "destination": "\(destination)",
                                 "avoid":"\(avoid)",
-                                "key": KEY_DIRECTIONS]
+                                "key": Constants.KEY_DIRECTIONS]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .placeSearch(let searchPlace):
+            let parameters = ["query": "\(searchPlace)",
+                                "key": Constants.KEY_MAP]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }

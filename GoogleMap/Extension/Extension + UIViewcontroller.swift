@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     func getDataPlacePhoto(photoReference: String) -> String {
-        let dataPhotos = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(photoReference)&key=\(KEY_MAP)"
+        let dataPhotos = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(photoReference)&key=\(Constants.KEY_MAP)"
         
         return dataPhotos
     }

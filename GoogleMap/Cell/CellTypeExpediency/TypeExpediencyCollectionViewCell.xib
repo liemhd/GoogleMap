@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TypeExpediencyCollectionViewCell" customModule="GoogleMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="69" height="27"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="69" height="27"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrs-aD-0bW">
+                        <rect key="frame" x="0.0" y="0.0" width="69" height="27"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQz-IU-Sv2">
+                                <rect key="frame" x="30" y="6.5" width="31" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imv_airplane" translatesAutoresizingMaskIntoConstraints="NO" id="6b7-fN-7mq">
+                                <rect key="frame" x="8" y="6.5" width="14" height="14"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="IBm-dC-anI"/>
+                                    <constraint firstAttribute="width" secondItem="6b7-fN-7mq" secondAttribute="height" multiplier="1:1" id="R5g-K7-eI3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OQz-IU-Sv2" firstAttribute="centerY" secondItem="nrs-aD-0bW" secondAttribute="centerY" id="Aam-MH-mTa"/>
+                            <constraint firstItem="OQz-IU-Sv2" firstAttribute="leading" secondItem="6b7-fN-7mq" secondAttribute="trailing" constant="8" id="X4b-co-YDo"/>
+                            <constraint firstItem="6b7-fN-7mq" firstAttribute="centerY" secondItem="nrs-aD-0bW" secondAttribute="centerY" id="gsm-m5-2DJ"/>
+                            <constraint firstItem="6b7-fN-7mq" firstAttribute="leading" secondItem="nrs-aD-0bW" secondAttribute="leading" constant="8" id="sBm-es-uGx"/>
+                            <constraint firstAttribute="trailing" secondItem="OQz-IU-Sv2" secondAttribute="trailing" constant="8" id="uCt-4A-8xr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="nrs-aD-0bW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3T4-PC-Bno"/>
+                <constraint firstAttribute="trailing" secondItem="nrs-aD-0bW" secondAttribute="trailing" id="KCg-oQ-JNe"/>
+                <constraint firstAttribute="bottom" secondItem="nrs-aD-0bW" secondAttribute="bottom" id="bGF-Vi-33c"/>
+                <constraint firstItem="nrs-aD-0bW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eAQ-Vy-aXn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="69" height="27"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imvExpediency" destination="6b7-fN-7mq" id="85n-FC-lcm"/>
+                <outlet property="timeLabel" destination="OQz-IU-Sv2" id="fBW-Fy-gXP"/>
+            </connections>
+            <point key="canvasLocation" x="329.0625" y="113.55633802816901"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="imv_airplane" width="32" height="32"/>
+    </resources>
+</document>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ViewDirection" customModule="GoogleMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="154"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-O7-ne2" userLabel="Button Back">
+                    <rect key="frame" x="8" y="38" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="Y0h-gK-2PF"/>
+                        <constraint firstAttribute="height" constant="32" id="qa6-HS-BMq"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                    <state key="normal" image="imv_back"/>
+                    <connections>
+                        <action selector="backBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dNl-cX-fke"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Your location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-mC-K2g" userLabel="Your Location">
+                    <rect key="frame" x="80" y="38" width="240" height="30"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdy-l9-ylk" userLabel="Location Search">
+                    <rect key="frame" x="80" y="84" width="240" height="30"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZz-1q-PXU" userLabel="Button Resever">
+                    <rect key="frame" x="336" y="91" width="16" height="16"/>
+                    <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
+                    <state key="normal" image="imv_reverse"/>
+                    <connections>
+                        <action selector="reseverBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="t9h-WC-kB5"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-VZ-otD">
+                    <rect key="frame" x="48" y="45" width="16" height="16"/>
+                    <state key="normal" image="imv_myLocation"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukg-G8-esg">
+                    <rect key="frame" x="40" y="61" width="32" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="KBn-YF-AhH"/>
+                        <constraint firstAttribute="height" constant="29" id="MKa-MI-6cv"/>
+                    </constraints>
+                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="12" minY="8" maxX="12" maxY="8"/>
+                    <state key="normal" image="imv_more"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbA-Qj-wUX">
+                    <rect key="frame" x="48" y="91" width="16" height="16"/>
+                    <color key="tintColor" red="1" green="0.34172172560000003" blue="0.45854096989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="imv_location"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdi-hN-Iha" userLabel="Button More">
+                    <rect key="frame" x="336" y="45" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="7iK-nw-Kqc"/>
+                        <constraint firstAttribute="width" constant="16" id="HgR-we-EdF"/>
+                    </constraints>
+                    <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <state key="normal" image="imv_more_option"/>
+                    <connections>
+                        <action selector="moreBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="AOo-oG-4rW"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9p-JI-Sz5" userLabel="View Type Expediency">
+                    <rect key="frame" x="0.0" y="130" width="368" height="34"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FCM-66-cgv">
+                            <rect key="frame" x="0.0" y="0.0" width="368" height="34"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2gm-PW-0qa">
+                                <size key="itemSize" width="43" height="34"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells/>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="FCM-66-cgv" firstAttribute="top" secondItem="U9p-JI-Sz5" secondAttribute="top" id="Gf7-7t-jjR"/>
+                        <constraint firstItem="FCM-66-cgv" firstAttribute="leading" secondItem="U9p-JI-Sz5" secondAttribute="leading" id="NQQ-ds-cK7"/>
+                        <constraint firstAttribute="bottom" secondItem="FCM-66-cgv" secondAttribute="bottom" id="fvQ-8Z-yXl"/>
+                        <constraint firstAttribute="height" constant="34" id="rrZ-Me-rel"/>
+                        <constraint firstAttribute="trailing" secondItem="FCM-66-cgv" secondAttribute="trailing" id="ygN-p1-6jp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fdi-hN-Iha" firstAttribute="leading" secondItem="WHI-mC-K2g" secondAttribute="trailing" constant="16" id="1Ja-U4-QiW"/>
+                <constraint firstItem="WHI-mC-K2g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="38" id="6dD-DY-eyJ"/>
+                <constraint firstItem="mdy-l9-ylk" firstAttribute="leading" secondItem="mbA-Qj-wUX" secondAttribute="trailing" constant="16" id="ALF-EM-JPY"/>
+                <constraint firstItem="mbA-Qj-wUX" firstAttribute="height" secondItem="DZz-1q-PXU" secondAttribute="height" id="BRE-6y-OUh"/>
+                <constraint firstItem="DZz-1q-PXU" firstAttribute="centerY" secondItem="mdy-l9-ylk" secondAttribute="centerY" id="BXU-7R-n1t"/>
+                <constraint firstItem="JWJ-VZ-otD" firstAttribute="width" secondItem="fdi-hN-Iha" secondAttribute="width" id="CUn-a8-wgo"/>
+                <constraint firstItem="mdy-l9-ylk" firstAttribute="top" secondItem="WHI-mC-K2g" secondAttribute="bottom" constant="16" id="IaS-NZ-3LP"/>
+                <constraint firstItem="JWJ-VZ-otD" firstAttribute="leading" secondItem="VMF-O7-ne2" secondAttribute="trailing" constant="8" id="JmU-pc-A5u"/>
+                <constraint firstItem="WHI-mC-K2g" firstAttribute="leading" secondItem="JWJ-VZ-otD" secondAttribute="trailing" constant="16" id="Lcw-MR-Dig"/>
+                <constraint firstItem="mdy-l9-ylk" firstAttribute="leading" secondItem="WHI-mC-K2g" secondAttribute="leading" id="Phv-x9-ncI"/>
+                <constraint firstItem="VMF-O7-ne2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="38" id="ZXo-mi-tZR"/>
+                <constraint firstItem="JWJ-VZ-otD" firstAttribute="centerY" secondItem="WHI-mC-K2g" secondAttribute="centerY" id="cML-FB-ZMc"/>
+                <constraint firstItem="mbA-Qj-wUX" firstAttribute="width" secondItem="DZz-1q-PXU" secondAttribute="width" id="clz-dB-fRN"/>
+                <constraint firstItem="JWJ-VZ-otD" firstAttribute="height" secondItem="fdi-hN-Iha" secondAttribute="height" id="f1P-p4-xnd"/>
+                <constraint firstItem="DZz-1q-PXU" firstAttribute="height" secondItem="fdi-hN-Iha" secondAttribute="height" id="inf-fi-0MG"/>
+                <constraint firstAttribute="trailing" secondItem="U9p-JI-Sz5" secondAttribute="trailing" id="l5m-0h-I6X"/>
+                <constraint firstItem="Ukg-G8-esg" firstAttribute="centerX" secondItem="JWJ-VZ-otD" secondAttribute="centerX" id="lQh-Tb-E3U"/>
+                <constraint firstItem="fdi-hN-Iha" firstAttribute="centerY" secondItem="WHI-mC-K2g" secondAttribute="centerY" id="lh3-m3-RqF"/>
+                <constraint firstItem="U9p-JI-Sz5" firstAttribute="top" secondItem="mdy-l9-ylk" secondAttribute="bottom" constant="16" id="mbX-e8-1x2"/>
+                <constraint firstItem="mbA-Qj-wUX" firstAttribute="centerY" secondItem="mdy-l9-ylk" secondAttribute="centerY" id="sIb-n8-kdg"/>
+                <constraint firstItem="DZz-1q-PXU" firstAttribute="leading" secondItem="fdi-hN-Iha" secondAttribute="leading" id="uBl-46-3cw"/>
+                <constraint firstItem="U9p-JI-Sz5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wOs-xc-Yye"/>
+                <constraint firstItem="VMF-O7-ne2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xcv-Jd-Imp"/>
+                <constraint firstItem="Ukg-G8-esg" firstAttribute="top" secondItem="JWJ-VZ-otD" secondAttribute="bottom" id="yHr-ju-6Nm"/>
+                <constraint firstItem="DZz-1q-PXU" firstAttribute="width" secondItem="fdi-hN-Iha" secondAttribute="width" id="ytW-qV-vf1"/>
+                <constraint firstItem="mdy-l9-ylk" firstAttribute="trailing" secondItem="WHI-mC-K2g" secondAttribute="trailing" id="zZM-8w-MSp"/>
+                <constraint firstAttribute="trailing" secondItem="fdi-hN-Iha" secondAttribute="trailing" constant="16" id="zcU-Cw-Ody"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="collectionViewTypeExpediency" destination="FCM-66-cgv" id="4sP-HY-ITb"/>
+                <outlet property="textFieldLocationSearch" destination="mdy-l9-ylk" id="3rd-ID-ecM"/>
+                <outlet property="textFieldYourLocation" destination="WHI-mC-K2g" id="vHB-Bp-ArV"/>
+            </connections>
+            <point key="canvasLocation" x="-143.47826086956522" y="-142.63392857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="imv_back" width="32" height="32"/>
+        <image name="imv_location" width="32" height="32"/>
+        <image name="imv_more" width="32" height="32"/>
+        <image name="imv_more_option" width="32" height="32"/>
+        <image name="imv_myLocation" width="112.5" height="112.5"/>
+        <image name="imv_reverse" width="32" height="32"/>
+    </resources>
+</document>

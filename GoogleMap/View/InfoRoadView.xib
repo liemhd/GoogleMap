@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoRoadView" customModule="GoogleMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="188"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5min (200m)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnk-AL-kqm">
+                    <rect key="frame" x="16" y="16" width="102.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3c-cA-5bI">
+                    <rect key="frame" x="30" y="138" width="58" height="30"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Optional"/>
+                    <connections>
+                        <action selector="optionalBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="laD-dn-fFN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJz-dn-mWq">
+                    <rect key="frame" x="195" y="138" width="70" height="30"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="44R-dq-jHv"/>
+                    </constraints>
+                    <state key="normal" title="Start"/>
+                    <connections>
+                        <action selector="startBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2AO-4c-YpV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NJz-dn-mWq" secondAttribute="trailing" constant="30" id="0M5-Qi-vq4"/>
+                <constraint firstItem="pnk-AL-kqm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="0UR-WZ-oNC"/>
+                <constraint firstItem="NJz-dn-mWq" firstAttribute="bottom" secondItem="X3c-cA-5bI" secondAttribute="bottom" id="IgL-yn-ZKV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="X3c-cA-5bI" secondAttribute="bottom" constant="20" id="REE-9U-nJE"/>
+                <constraint firstItem="pnk-AL-kqm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="hIS-HA-Oaw"/>
+                <constraint firstItem="X3c-cA-5bI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="iWQ-sZ-1p4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="timeAndDistanceLabel" destination="pnk-AL-kqm" id="Ija-dr-Qyr"/>
+            </connections>
+            <point key="canvasLocation" x="186.5625" y="28.52112676056338"/>
+        </view>
+    </objects>
+</document>
